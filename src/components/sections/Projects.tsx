@@ -24,7 +24,7 @@ export function Projects() {
         </motion.div>
 
         <div className="flex flex-col gap-12 md:gap-16">
-          {portfolioData.projects.map((project, index) => (
+          {portfolioData.projects.map((project) => (
             <motion.div 
               key={project.id}
               initial={{ opacity: 0, y: 20 }}

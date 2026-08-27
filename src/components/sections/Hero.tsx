@@ -2,7 +2,7 @@
 
 import { portfolioData } from "@/data/portfolioData";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 export function Hero() {
@@ -77,7 +77,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-            className="relative w-full max-w-sm lg:max-w-full aspect-[3/4] lg:aspect-3/4 rounded-[32px] overflow-hidden bg-surface border border-white/10 group"
+            className="relative w-full max-w-sm lg:max-w-full aspect-3/4 lg:aspect-3/4 rounded-[32px] overflow-hidden bg-surface border border-white/10 group"
           >
             <Image 
               src="/profile.jpeg" 
