@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { portfolioData } from "@/data/portfolioData";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "About", href: "/#about" },
@@ -17,8 +18,14 @@ const navLinks = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const pathname = usePathname();
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname, activeHash]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,7 +118,54 @@ export function Header() {
         >
           Download CV
         </a>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 shadow-2xl md:hidden"
+          >
+            <nav className="flex flex-col p-6 space-y-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={cn(
+                    "px-4 py-3 text-lg font-medium rounded-lg transition-colors",
+                    isActive(link.href) 
+                      ? "bg-brand-blue/10 text-white border border-brand-blue/20" 
+                      : "text-gray-400 hover:text-white hover:bg-surface"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <a 
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center justify-center h-12 w-full rounded-full bg-surface text-white text-base font-medium hover:text-brand-sky border border-white/10 transition-colors"
+              >
+                Download CV
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
