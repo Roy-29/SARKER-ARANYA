@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0d1618; /* Very dark teal/slate */
+  --color-foreground: #ffffff;
+  --color-surface: #16262a; /* Dark teal surface for cards */
+  --color-surface-hover: #1f373d;
+  --color-text-secondary: #c8ced1; /* Light Grey-Blue */
+  --color-accent: #61a69d; /* Soft Seafoam/Teal */
+  
+  /* User Palette Colors */
+  --color-brand-blue: #366974; /* Deep Teal */
+  --color-brand-sky: #61a69d; /* Soft Seafoam */
+  --color-brand-mint: #b5cfcb; /* Pale Mint */
+  --color-brand-slate: #a1a4a5;
+  --color-brand-light: #c8ced1;
+  
+  --radius-sm: 10px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-xl: 50px;
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #0d1618;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection */
+::selection {
+  background: rgba(97, 166, 157, 0.3); /* Brand Sky with 30% opacity */
+  color: #ffffff;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
