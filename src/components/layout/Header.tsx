@@ -85,7 +85,7 @@ export function Header() {
           className="text-xl font-bold tracking-tight text-white hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
           aria-label="Home"
         >
-          {portfolioData.profile.name}
+          Sarker Aranya
         </Link>
 
         <nav className="hidden md:flex items-center space-x-1">
