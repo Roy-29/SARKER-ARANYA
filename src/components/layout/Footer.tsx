@@ -76,7 +76,7 @@ export function Footer() {
       </div>
       
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-        <p>&copy; {currentYear} {portfolioData.profile.name}. All rights reserved. Designed & Built by Swapnil Roy.</p>
+        <p>&copy; {currentYear} {portfolioData.profile.name}. All rights reserved.</p>
         <a 
           href="#" 
           className="hover:text-brand-sky transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm p-1"
